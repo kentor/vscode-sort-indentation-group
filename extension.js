@@ -74,7 +74,9 @@ exports.activate = function activate(context) {
 
     // sort the lines
     textLines.sort((a, b) => {
-      return a.text < b.text ? -1 : a.text > b.text ? 1 : 0;
+      const aText = a.text.toLowerCase();
+      const bText = b.text.toLowerCase();
+      return aText < bText ? -1 : aText > bText ? 1 : 0;
     });
 
     // replace the lines
