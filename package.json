@@ -2,7 +2,7 @@
   "name": "sort-indentation-group",
   "displayName": "sort-indentation-group",
   "description": "Sort surrounding lines with the same indentation as the line under the cursor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "kentor",
   "engines": {
     "vscode": "^1.5.0"
@@ -32,9 +32,17 @@
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
+  "keywords": [
+    "formatter",
+    "formatting",
+    "indentation",
+    "sort",
+    "sorting",
+    "vscode"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kentor/vscode-sort-indentation-groups"
+    "url": "https://github.com/kentor/vscode-sort-indentation-group"
   },
   "devDependencies": {
     "eslint": "^3.9.0",
