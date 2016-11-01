@@ -21,27 +21,30 @@ exports.activate = function activate(context) {
     const indentationRE = new RegExp(`^${indentation}\\S`);
 
     // get lines around this line with the same indentation
-    const textLines = [currentTextLine];
     let firstTextLine = currentTextLine;
     let lastTextLine = currentTextLine;
 
+    const beforeLines = [];
     for (let i = currentLine - 1; i >= 0; i--) {
       const textLine = editor.document.lineAt(i);
       if (textLine.isEmptyOrWhitespace || !indentationRE.test(textLine.text)) {
         break;
       }
       firstTextLine = textLine;
-      textLines.push(textLine);
+      beforeLines.push(textLine);
     }
 
+    const afterLines = [currentTextLine];
     for (let i = currentLine + 1; i < editor.document.lineCount; i++) {
       const textLine = editor.document.lineAt(i);
       if (textLine.isEmptyOrWhitespace || !indentationRE.test(textLine.text)) {
         break;
       }
       lastTextLine = textLine;
-      textLines.push(textLine);
+      afterLines.push(textLine);
     }
+
+    const textLines = beforeLines.reverse().concat(afterLines);
 
     return { textLines, firstTextLine, lastTextLine };
   }
